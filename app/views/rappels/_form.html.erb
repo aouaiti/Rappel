@@ -1,0 +1,30 @@
+<%= error_messages_for @rappel %>
+
+<div class="box tabular">
+  <p><%= f.text_field :subject, required: true, size: 80 %></p>
+  
+  <p><%= f.text_area :message, rows: 5, cols: 80 %></p>
+  
+  <p>
+    <%= f.select :issue_id, 
+                 @issues.collect {|i| ["#{i.tracker.name} ##{i.id}: #{i.subject}", i.id]},
+                 { include_blank: true },
+                 { required: true } %>
+  </p>
+  
+  <div class="splitcontent">
+    <div class="splitcontentleft">
+      <p>
+        <%= f.select :frequency_unit, 
+                   [['Minutes', 'minute'], ['Hours', 'hour'], ['Days', 'day'], ['Weeks', 'week'], ['Months', 'month']], 
+                   { required: true } %>
+      </p>
+    </div>
+    
+    <div class="splitcontentright">
+      <p>
+        <%= f.number_field :frequency_value, required: true, min: 1 %>
+      </p>
+    </div>
+  </div>
+</div> 

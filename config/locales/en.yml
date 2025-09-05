@@ -1,0 +1,20 @@
+en:
+  label_rappel_plural: Rappels
+  label_rappel: Rappel
+  label_rappel_new: New Rappel
+  label_rappel_edit: Edit Rappel
+  
+  field_frequency: Frequency
+  field_next_run: Next Run
+  field_last_run: Last Run
+  
+  notice_rappel_created: Rappel was successfully created.
+  notice_rappel_updated: Rappel was successfully updated.
+  notice_rappel_deleted: Rappel was successfully deleted.
+  
+  error_issue_not_found: Issue not found 
+  
+  # Settings
+  setting_rappel_overdue_only: "Only send reminders when the issue is overdue"
+  help_rappel_overdue_only: "When checked, reminders are sent only if the issue due date has passed. Issues without a due date will not receive reminders."
+  note_rappel_overdue_only_effect: "Uncheck to keep current behavior (reminders independent of due date)."

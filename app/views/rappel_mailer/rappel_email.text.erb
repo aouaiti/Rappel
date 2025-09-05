@@ -1,0 +1,20 @@
+<%= @user.name %>,
+
+Ceci est un rappel concernant la tâche suivante :
+
+<%= @issue.tracker.name %> #<%= @issue.id %>: <%= @issue.subject %>
+
+<% if @rappel.message.present? %>
+<%= @rappel.message %>
+<% end %>
+
+Statut: <%= @issue.status.name %>
+Priorité: <%= @issue.priority.name %>
+<% if @issue.assigned_to %>
+Attribuée à: <%= @issue.assigned_to.name %>
+<% end %>
+Date d'échéance: <%= format_date(@issue.due_date) if @issue.due_date %>
+
+Vous pouvez consulter cette tâche à l’adresse : <%= @issue_url %>
+
+Ce rappel continuera d’être envoyé jusqu’à la clôture de la tâche. 

@@ -1,0 +1,13 @@
+<% overdue_only_enabled = (@settings && @settings['overdue_only'].to_s == '1') %>
+
+<p>
+  <label for="settings_overdue_only"><%= l(:setting_rappel_overdue_only) %></label>
+  <%= check_box_tag 'settings[overdue_only]', '1', overdue_only_enabled, id: 'settings_overdue_only' %>
+  <br />
+  <em class="info"><%= l(:help_rappel_overdue_only) %></em>
+  <br />
+  <small><%= l(:note_rappel_overdue_only_effect) %></small>
+</p>
+
+
+

@@ -1,0 +1,22 @@
+<p>Bonjour <%= @user.name %>,</p>
+
+<p>Ceci est un rappel concernant la tâche suivante :</p>
+
+<h2><%= link_to "#{@issue.subject}", @issue_url %></h2>
+
+<% if @rappel.message.present? %>
+  <p><%= @rappel.message %></p>
+<% end %>
+
+<p>
+  <strong>Statut:</strong> <%= @issue.status.name %><br>
+  <strong>Priorité:</strong> <%= @issue.priority.name %><br>
+  <% if @issue.assigned_to %>
+    <strong>Assigned to:</strong> <%= @issue.assigned_to.name %><br>
+  <% end %>
+  <strong>Date d'échéance:</strong> <%= format_date(@issue.due_date) if @issue.due_date %>
+</p>
+
+<p>Vous pouvez consulter cette tâche à l’adresse: <%= link_to @issue_url, @issue_url %></p>
+
+<p>Ce rappel continuera d’être envoyé jusqu’à la clôture de la tâche.</p> 

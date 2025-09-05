@@ -1,0 +1,9 @@
+<h2><%= l(:label_rappel_new) %></h2>
+
+<%= labelled_form_for @rappel, url: project_rappels_path(@project) do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>
+  <p>
+    <%= f.submit l(:button_create) %>
+    <%= link_to l(:button_cancel), project_rappels_path(@project) %>
+  </p>
+<% end %> 

@@ -1,0 +1,50 @@
+<h2><%= l(:label_rappel_plural) %></h2>
+
+<div class="contextual">
+  <%= link_to l(:label_rappel_new), 
+              new_project_rappel_path(@project),
+              class: 'icon icon-add' %>
+</div>
+
+<% if @rappels.any? %>
+  <div class="autoscroll">
+    <table class="list">
+      <thead>
+        <tr>
+          <th><%= l(:field_subject) %></th>
+          <th><%= l(:field_issue) %></th>
+          <th><%= l(:field_frequency) %></th>
+          <th><%= l(:field_next_run) %></th>
+          <th><%= l(:field_last_run) %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @rappels.each do |rappel| %>
+          <tr>
+            <td><%= rappel.subject %></td>
+            <td>
+              <% if rappel.issue %>
+                <%= link_to "#{rappel.issue.tracker.name} ##{rappel.issue.id}: #{rappel.issue.subject}", issue_path(rappel.issue) %>
+              <% else %>
+                <span class="error"><%= l(:error_issue_not_found) %></span>
+              <% end %>
+            </td>
+            <td><%= "#{rappel.frequency_value} #{rappel.frequency_unit}(s)" %></td>
+            <td><%= format_time(rappel.next_run_date) if rappel.next_run_date %></td>
+            <td><%= format_time(rappel.last_run_date) if rappel.last_run_date %></td>
+            <td class="buttons">
+              <%= link_to l(:button_edit), edit_project_rappel_path(@project, rappel), class: 'icon icon-edit' %>
+              <%= link_to l(:button_delete), project_rappel_path(@project, rappel), 
+                          method: :delete, 
+                          data: { confirm: l(:text_are_you_sure) }, 
+                          class: 'icon icon-del' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% end %> 
